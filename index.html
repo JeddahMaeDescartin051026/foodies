@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f3ed">
   <title>Neighbor's Kitchen | Order Food</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css?v=3">
 </head>
 <body>
   <header class="site-header">
@@ -64,8 +64,9 @@
               <label> Your name
                 <input type="text" id="customerName" name="customer_name" autocomplete="name" placeholder="e.g. Alex Santos" required>
               </label>
-              <label> Email address
-                <input type="email" id="customerEmail" name="customer_email" autocomplete="email" placeholder="you@example.com" required>
+              <label> Phone number
+                <input type="tel" id="customerPhone" name="customer_phone" autocomplete="tel" placeholder="e.g. 09XX XXX XXXX" inputmode="tel" required>
+                <small class="field-note">We’ll call you if we need to clarify anything about your order.</small>
               </label>
             </div>
 
