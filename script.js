@@ -142,7 +142,7 @@ orderForm.addEventListener("submit", (event) => {
   }
   orderSnapshot = {
     name: $("customerName").value.trim(),
-    email: $("customerEmail").value.trim(),
+    phone: $("customerPhone").value.trim(),
     items: orderItems.map((item) => ({ menuId: item.menuId, quantity: item.quantity })),
     total: getTotal()
   };
@@ -194,7 +194,7 @@ deliveryForm.addEventListener("submit", async (event) => {
     "NEW APARTMENT FOOD ORDER",
     "",
     `Customer: ${orderSnapshot.name}`,
-    `Customer email: ${orderSnapshot.email}`,
+    `Customer phone: ${orderSnapshot.phone}`,
     "",
     "Items:",
     foodSummary,
@@ -213,7 +213,7 @@ deliveryForm.addEventListener("submit", async (event) => {
   formData.append("subject", `New food order — ${orderSnapshot.name} — ${peso(orderSnapshot.total)}`);
   formData.append("from_name", "Neighbor's Kitchen Order Form");
   formData.append("name", orderSnapshot.name);
-  formData.append("email", orderSnapshot.email);
+  formData.append("phone_number", orderSnapshot.phone);
   formData.append("message", message);
   formData.append("botcheck", "");
 
