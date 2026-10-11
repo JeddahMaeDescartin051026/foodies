@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3ed">
+  <title>Neighbor's Kitchen | Order Food</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Neighbor's Kitchen home">
+      <span class="brand-mark">NK</span>
+      <span><strong>Neighbor's Kitchen</strong><small>Homemade favorites, close to home</small></span>
+    </a>
+    <a class="header-link" href="#order">Place an order <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">MADE WITH CARE · DELIVERED TO YOUR DOOR</p>
+        <h1>A little homemade<br><em>happiness.</em></h1>
+        <p class="hero-text">Craving a snack? Order your favorites and have them delivered right to your room.</p>
+        <a class="primary-link" href="#order">Start your order <span aria-hidden="true">↓</span></a>
+        <div class="hero-note"><span class="dot"></span> Made for our apartment community</div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of homemade snacks">
+        <div class="sun"></div>
+        <div class="food-card card-one"><span>🥟</span><b>Empanadas</b><small>Golden & savory</small></div>
+        <div class="food-card card-two"><span>🥢</span><b>Ngohiong</b><small>Crispy favorite</small></div>
+        <div class="art-caption">GOOD FOOD, JUST A FEW FLOORS AWAY.</div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE MENU</p><h2>What sounds good?</h2></div>
+        <p>Choose one favorite or mix and match a few.</p>
+      </div>
+      <div class="menu-grid">
+        <article class="menu-card"><div class="menu-emoji empanada">🥟</div><div class="menu-card-copy"><h3>Chicken Empanada</h3><p>Golden pastry with a savory chicken filling.</p><span class="menu-tag">SAVORY · HANDHELD</span></div></article>
+        <article class="menu-card"><div class="menu-emoji pork">🥟</div><div class="menu-card-copy"><h3>Pork Empanada</h3><p>A hearty, comforting classic in a crisp pastry.</p><span class="menu-tag">SAVORY · HANDHELD</span></div></article>
+        <article class="menu-card"><div class="menu-emoji vegetable">🥬</div><div class="menu-card-copy"><h3>Vegetable Empanada</h3><p>A veggie-filled option with a golden crust.</p><span class="menu-tag">VEGGIE FAVORITE</span></div></article>
+        <article class="menu-card"><div class="menu-emoji ngohiong">🥢</div><div class="menu-card-copy"><h3>Ngohiong</h3><p>A crunchy Filipino-style snack with bold flavor.</p><span class="menu-tag">CRISPY · FLAVORFUL</span></div></article>
+      </div>
+    </section>
+
+    <section class="order-section" id="order">
+      <div class="order-intro">
+        <p class="eyebrow">QUICK & EASY</p>
+        <h2>Your order,<br><em>your way.</em></h2>
+        <p>Fill in your details, select your snacks, then pay securely through your GCash app.</p>
+        <div class="steps-mini"><span class="step-number">1</span><span>Build your order</span><span class="step-line"></span><span class="step-number muted">2</span><span>Pay & arrange delivery</span></div>
+        <p class="small-note">Please double-check your quantities and room number before submitting.</p>
+      </div>
+
+      <div class="order-panel">
+        <div class="panel-top"><div><p class="eyebrow">ORDER FORM</p><h2>Let's get you fed.</h2></div><span class="secure-pill">● Simple & secure</span></div>
+
+        <div id="stepOrder" class="step-panel">
+          <form id="orderForm">
+            <div class="field-grid">
+              <label> Your name
+                <input type="text" id="customerName" name="customer_name" autocomplete="name" placeholder="e.g. Alex Santos" required>
+              </label>
+              <label> Email address
+                <input type="email" id="customerEmail" name="customer_email" autocomplete="email" placeholder="you@example.com" required>
+              </label>
+            </div>
+
+            <div class="items-heading"><div><h3>Your items</h3><p>Add as many menu items as you'd like.</p></div></div>
+            <div id="orderItems" class="order-items"></div>
+            <button type="button" id="addItemBtn" class="add-item">＋ Add new item</button>
+
+            <div class="order-total"><span>Order total</span><strong id="orderTotal">₱0.00</strong></div>
+            <p id="priceSetupNote" class="setup-note">Menu prices need to be set in script.js before you accept orders.</p>
+            <button type="submit" class="primary-button">Confirm payment <span aria-hidden="true">→</span></button>
+            <p class="privacy-note">Your details are used to coordinate your order and delivery.</p>
+          </form>
+        </div>
+
+        <div id="stepPayment" class="step-panel hidden" aria-live="polite">
+          <button type="button" class="back-link" id="backToOrder">← Back to order</button>
+          <p class="eyebrow">STEP 2 OF 3</p>
+          <h2>Pay with GCash</h2>
+          <p class="step-description">Scan the QR code below using your GCash app. Pay the exact amount shown.</p>
+          <div class="payment-amount"><span>Amount to pay</span><strong id="paymentTotal">₱0.00</strong></div>
+          <div class="qr-frame">
+            <img id="gcashQr" src="gcash-qr.png" alt="Your GCash QR code" onerror="this.style.display='none';document.getElementById('qrPlaceholder').style.display='grid'">
+            <div id="qrPlaceholder" class="qr-placeholder"><span class="qr-icon">▦</span><strong>Add your GCash QR code</strong><small>Save your QR image as <code>gcash-qr.png</code><br>in this website folder.</small></div>
+          </div>
+          <p class="payment-instruction">Done paying? Click continue and remember the last 4 digits of the GCash reference#.</p>
+          <button type="button" id="continueBtn" class="primary-button">Continue <span aria-hidden="true">→</span></button>
+          <p class="tiny-note">Payment is not automatically verified. The seller will check the transaction before fulfilling the order.</p>
+        </div>
+
+        <div id="stepDelivery" class="step-panel hidden">
+          <button type="button" class="back-link" id="backToPayment">← Back to payment</button>
+          <p class="eyebrow">STEP 3 OF 3</p>
+          <h2>Where should we bring it?</h2>
+          <p class="step-description">Just a few details to get your order to the right door.</p>
+          <div id="finalOrderSummary" class="final-summary"></div>
+          <form id="deliveryForm">
+            <label>Preferred delivery time
+              <input type="datetime-local" id="deliveryTime" name="preferred_delivery_time" required>
+            </label>
+            <div class="field-grid">
+              <label>Building / room number
+                <input type="text" id="roomNumber" name="room_number" placeholder="e.g. Tower B, Room 1208" required>
+              </label>
+              <label>Last 4 digits of GCash reference #
+                <input type="text" id="referenceDigits" name="gcash_reference_last4" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="1234" required>
+              </label>
+            </div>
+            <label>Delivery notes <span class="optional">(optional)</span>
+              <textarea id="deliveryNotes" name="delivery_notes" rows="3" placeholder="Landmark, gate instructions, or other notes"></textarea>
+            </label>
+            <button type="submit" id="submitOrderBtn" class="primary-button">Submit order <span aria-hidden="true">✓</span></button>
+            <p class="privacy-note">Your order details will be sent to the seller for confirmation.</p>
+          </form>
+        </div>
+
+        <div id="stepSuccess" class="step-panel hidden" aria-live="polite">
+          <div class="success-icon">✓</div>
+          <p class="eyebrow">ORDER DETAILS SENT</p>
+          <h2>Thank you!</h2>
+          <p>Your order details have been submitted. The seller will review your payment and contact you if anything needs to be confirmed.</p>
+          <button type="button" id="newOrderBtn" class="primary-button">Place another order</button>
+        </div>
+        <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">NK</span><span><strong>Neighbor's Kitchen</strong><small>Good food, close to home.</small></span></a><p>Homemade with care for our neighborhood.</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
